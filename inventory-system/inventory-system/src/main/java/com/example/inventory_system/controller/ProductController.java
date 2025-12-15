@@ -26,6 +26,7 @@ import java.net.URI;
 
 import static org.springframework.http.HttpStatus.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -97,7 +98,8 @@ public class ProductController {
 
     // GET by id
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ProductResponse get(@PathVariable Long id) {
+
+    public ProductResponse get(@PathVariable("id") Long id) {
         Product p = products.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Product not found"));
         return toResponse(p);
@@ -215,14 +217,16 @@ public class ProductController {
 
 
     // DELETE
+    // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {  // 👈 burası değişti
         if (!products.existsById(id)) {
             throw new ResponseStatusException(NOT_FOUND, "Product not found");
         }
         products.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 
     private ProductResponse toResponse(Product p) {
         return new ProductResponse(

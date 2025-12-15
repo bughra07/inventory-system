@@ -3,7 +3,9 @@ package com.example.inventory_system.dto;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-public class AdjustStockRequest {
+public class
+
+AdjustStockRequest {
     public enum Type { IN, OUT }
 
     @NotNull

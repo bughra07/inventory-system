@@ -1,0 +1,85 @@
+############################################
+# OS / Windows
+############################################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+############################################
+# Logs
+############################################
+*.log
+logs/
+*.pid
+*.seed
+
+############################################
+# IDE / Editors
+############################################
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+############################################
+# Java / Maven / Spring Boot
+############################################
+# Maven build outputs
+**/target/
+*.class
+
+# Maven / wrapper helper files (keep wrappers)
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+
+# Spring Boot runtime files
+*.jar
+*.war
+*.ear
+*.nar
+
+############################################
+# Node / Vite (frontend)
+############################################
+# Dependencies
+frontend/node_modules/
+
+# Vite build outputs / cache
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+frontend/.turbo/
+frontend/.parcel-cache/
+
+# TypeScript build info
+frontend/*.tsbuildinfo
+
+# Coverage / test
+frontend/coverage/
+
+# Env files (keep example if you have)
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+############################################
+# General env / secrets (root)
+############################################
+.env
+.env.*
+!.env.example
+
+############################################
+# Misc
+############################################
+*.swp
+*.swo

@@ -4,17 +4,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import com.example.inventory_system.domain.Category;
+
 
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
-@Table(name = "products",
+@Table(
+        name = "products",
         indexes = {
-                @Index(name = "idx_products_sku", columnList = "sku", unique = true),
-                @Index(name = "idx_products_branch_id", columnList = "branch_id")
-        })
-
-
+                @Index(
+                        name = "idx_products_branch_id",
+                        columnList = "branch_id"
+                ),
+                @Index(
+                        name = "idx_products_branch_sku",
+                        columnList = "branch_id, sku",
+                        unique = true
+                )
+        }
+)
 
 public class Product {
 
@@ -34,7 +41,7 @@ public class Product {
     @Column(nullable=false, length=96)
     private String name;
 
-    @Column(nullable=false, length=64, unique = true)
+    @Column(nullable=false, length=64)
     private String sku;
 
     @Column(nullable=false, precision = 14, scale = 2)

@@ -6,10 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     boolean existsBySkuIgnoreCase(String sku);
-
+    Optional<Product> findBySkuIgnoreCaseAndBranch_Id(String sku, Long branchId);
     @EntityGraph(attributePaths = "branch")
     Page<Product> findAll(Pageable pageable);
 

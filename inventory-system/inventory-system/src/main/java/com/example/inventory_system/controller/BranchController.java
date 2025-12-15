@@ -39,17 +39,19 @@ public class BranchController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Branch get(@PathVariable Long id) {
+    public Branch get(@PathVariable("id") Long id) {
         return repo.findById(id).orElseThrow(() ->
                 new ResponseStatusException(NOT_FOUND, "Branch not found"));
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public Branch update(@PathVariable Long id, @Valid @RequestBody BranchCreateRequest req) {
+    public Branch update(@PathVariable("id") Long id,
+                         @Valid @RequestBody BranchCreateRequest req) {
         Branch b = repo.findById(id).orElseThrow(() ->
                 new ResponseStatusException(NOT_FOUND, "Branch not found"));
 
-        if (!b.getName().equalsIgnoreCase(req.getName()) && repo.existsByNameIgnoreCase(req.getName())) {
+        if (!b.getName().equalsIgnoreCase(req.getName()) &&
+                repo.existsByNameIgnoreCase(req.getName())) {
             throw new ResponseStatusException(CONFLICT, "Branch name already exists");
         }
 
@@ -60,11 +62,12 @@ public class BranchController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         if (!repo.existsById(id)) {
             throw new ResponseStatusException(NOT_FOUND, "Branch not found");
         }
         repo.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

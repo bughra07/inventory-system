@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class BranchCreateRequest {
+public class  BranchCreateRequest {
         @NotBlank @Size(min = 3, max = 64)
         private String name;
 

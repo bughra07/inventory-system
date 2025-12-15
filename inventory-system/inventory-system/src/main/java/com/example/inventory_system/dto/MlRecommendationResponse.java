@@ -12,4 +12,5 @@ public record MlRecommendationResponse(
         Double mape,          // model performansı: mean absolute percentage error
         int sampleCount,      // kaç günlük veriyle hesaplandı
         List<MlRecommendationItemResponse> items
+
 ) {}

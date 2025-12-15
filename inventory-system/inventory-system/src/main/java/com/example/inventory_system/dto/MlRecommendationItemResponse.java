@@ -13,5 +13,7 @@ public record MlRecommendationItemResponse(
         long expiringSoonQuantity,       // SKT yaklaşan stok (branch veya tüm şubeler)
         String recommendation,           // BUY / HOLD / AVOID / PROMOTE / TRANSFER_OR_PROMOTE
         double riskScore,                // 0.0 (rahat) - 1.0 (yüksek risk)
-        String explanation               // okunabilir açıklama
+        String explanation,               // okunabilir açıklama
+        String velocityClass
+
 ) {}
